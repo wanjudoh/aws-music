@@ -5,11 +5,11 @@ sudo apt-get install python3
 sudo apt-get install python3-pip -y
 sudo apt-get install python3-venv -y
 cd /home/ubuntu
-git clone https://github.com/eneun/noonsong_minecraft.git
+git clone https://github.com/eneun/aws-music.git
 sudo pip3 install --upgrade pip
 python3 -m venv venv
 . venv/bin/activate
-cd noonsong_minecraft
+cd aws-music
 pip3 install -r requirements.txt
 python3 manage.py migrate
 python3 manage.py collectstatic
