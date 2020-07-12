@@ -14,3 +14,11 @@ def main(request):
         musics = Music.objects.all
         form = MusicForm()
         return render(request, 'main.html', {'form': form, 'musics': musics})
+
+def setting(request):
+    from soundcloud import settings
+    s3_bucket_name = request.POST['s3-bucket-name']
+    s3_region = request.POST['s3-region']
+    settings.AWS_STORAGE_BUCKET_NAME = s3_bucket_name
+    settings.AWS_REGION = s3_region
+    return redirect('main')

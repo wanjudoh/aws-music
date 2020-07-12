@@ -13,9 +13,10 @@
     <body>
         <div class="bg-container">
             <div class="title">AWS MUSIC</div>
-            <button type="button" class="btn btn-outline-light btn-lg" data-toggle="modal" data-target="#addMusic">음악 추가</button>
+            <button type="button" class="btn btn-outline-info btn-lg" data-toggle="modal" data-target="#addMusic">음악 추가</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg" data-toggle="modal" data-target="#admin">설정</button>
         </div>
-        <!-- Modal -->
+        
         <div class="modal fade" id="addMusic" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -39,6 +40,35 @@
                             <div class="form-group">
                                 <label class="col-form-label">파일:</label>
                                 {{form.music}}
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+                            <button type="submit" class="btn btn-primary">등록</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="admin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">설정</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="{% url 'setting' %}" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-form-label">S3 bucket name:</label>
+                                <input name="s3-bucket-name" type="text" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label">S3 region:</label>
+                                <input name="s3-region" type="text" class="form-control"/>
                             </div>
                         </div>
                         <div class="modal-footer">
